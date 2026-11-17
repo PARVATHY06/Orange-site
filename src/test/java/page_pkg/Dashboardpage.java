@@ -1,7 +1,13 @@
 package page_pkg;
 
+import java.io.File;
+import java.io.IOException;
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -41,7 +47,7 @@ public class Dashboardpage {
         adminMenu.click();
     }
 
-    public void details() {
+    public void details() throws Exception {
     	
     	username.sendKeys("sreya");
 
@@ -50,6 +56,8 @@ public class Dashboardpage {
     	obj=new Select(userrole);
     	obj.selectByVisibleText("Admin");
     	
+    	File s= ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+    	FileHandler.copy(s, new File("./screenshot/image.png"));
     	
     }	
     	
